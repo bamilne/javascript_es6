@@ -9,15 +9,20 @@ export class BaseElement {
     appendToElement(el) {
         this.createElement();
         el.append(this.element);
+        this.enableJS();
     }
     
     createElement() {
-        let s = getElementString();
+        let s = this.getElementString();
         this.element = $(s);
     }
     
     getElementString() {
-        throw 'Please override getElementString() in BaseElement';
+    throw 'please over-ride';
+    }
+
+    enableJS() {
+    componentHandler.upgradeElement(this.element[0]);
     }
 
 }
